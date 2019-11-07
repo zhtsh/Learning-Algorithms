@@ -43,12 +43,37 @@ def bubble_sort(data_list):
     print(data_list)
 
 
+def insert_sort(data_list):
+    print("starting insert sorting........")
+    begin_time = time.time()
+    n = len(data_list)
+    for i in range(1, n):
+        i_value = data_list[i]
+        k = i
+        for j in range(i-1, -1, -1):
+            if data_list[j] > i_value:
+                data_list[j+1] = data_list[j]
+                k = j
+            else:
+                break
+        if k != i:
+            data_list[k] = i_value
+    print("elasped time: {} seconds".format(time.time()-begin_time))
+    print("insert sort result: ")
+    print(data_list)
+
+
 if __name__ == '__main__':
     n = int(sys.argv[1])
     data_list = [random.randint(1, 10000) for i in range(n)]
+    print("source data list: ")
+    print(data_list)
     select_data_list = list(data_list)
     select_sort(select_data_list)
     print("")
     bubble_data_list = list(data_list)
     bubble_sort(bubble_data_list)
+    print("")
+    insert_data_list = list(data_list)
+    insert_sort(insert_data_list)
     print("")
